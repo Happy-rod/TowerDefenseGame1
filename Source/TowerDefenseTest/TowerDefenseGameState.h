@@ -31,4 +31,5 @@ private:
 
 	UUserWidget* PlayerInfoWidgetInstance = nullptr;
 
+	UUserWidget* GameResultWidgetInstance = nullptr;
 };

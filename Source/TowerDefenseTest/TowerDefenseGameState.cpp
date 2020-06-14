@@ -25,6 +25,11 @@ void ATowerDefenseGameState::BeginPlay()
 			}
 		}
 	}
+
+	if (GameResultWidgetInstance) {
+		GameResultWidgetInstance->RemoveFromParent();
+		GameResultWidgetInstance = nullptr;
+	}
 }
 
 void ATowerDefenseGameState::Tick(float DeltaTime)
@@ -38,4 +43,16 @@ void ATowerDefenseGameState::Damage(int Damage)
 {
 	Health -= Damage;
 	((UPlayerInfoUserWidget*)PlayerInfoWidgetInstance)->Health = Health;
+
+	// ÅÐ¶¨Ê§°Ü
+	if (Health <= 0) {
+		if (UClass* DialogClass = LoadClass<UUserWidget>(nullptr, TEXT("WidgetBlueprint'/Game/TwinStick/LoseBlueprint.LoseBlueprint_C'"))) {
+			if (APlayerController* PC = GetWorld()->GetFirstPlayerController()) {
+				GameResultWidgetInstance = CreateWidget<UUserWidget>(PC, DialogClass);
+				if (GameResultWidgetInstance) {
+					GameResultWidgetInstance->AddToViewport();
+				}
+			}
+		}
+	}
 }
