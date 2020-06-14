@@ -25,7 +25,6 @@ protected:
 
 protected:
 	virtual void BeginPlay() override;
-
 	virtual void Upgrade();
 	void DestroyTower();
 

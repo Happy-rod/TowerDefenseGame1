@@ -21,10 +21,11 @@ private:
 protected:
 	virtual void BeginPlay() override;
 
+	int32 Health = 100;
 	int32 Speed = 60;
 	int32 Damage = 1;
 
 public:	
 	virtual void Tick(float DeltaTime) override;
-
+	virtual float TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController *EventInstigator, AActor *DamageCauser);
 };

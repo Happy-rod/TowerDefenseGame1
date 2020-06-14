@@ -7,12 +7,15 @@
 
 ATowerBase::ATowerBase()
 {
+	PrimaryActorTick.bCanEverTick = true;
+
 	OnClicked.AddDynamic(this, &ATowerBase::OnClick);
 }
 
 void ATowerBase::BeginPlay()
 {
 	Super::BeginPlay();
+	UE_LOG(LogTemp, Warning, TEXT("CNM BeginPlay"));
 }
 
 void ATowerBase::Upgrade() {}
@@ -26,6 +29,8 @@ void ATowerBase::DestroyTower()
 void ATowerBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	UE_LOG(LogTemp, Warning, TEXT("CNM"));
 }
 
 void ATowerBase::OnClick(AActor* TouchedActor, FKey ButtonPressed)

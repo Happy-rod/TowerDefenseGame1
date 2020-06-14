@@ -16,9 +16,13 @@ private:
 	int32 RangeArr[8] = { 0, 10, 10, 12, 12, 14, 18 };
 	int32 CostArr[8] = { 0, 10, 12, 15, 18, 22, 28 };
 
+	float Timer = 0;
+
 public:
 
 	AArrowTower();
+
+	virtual void Tick(float DeltaTime) override;
 
 	virtual void Upgrade() override;
 };

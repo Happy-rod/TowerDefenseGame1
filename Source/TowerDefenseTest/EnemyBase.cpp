@@ -37,3 +37,10 @@ void AEnemyBase::Tick(float DeltaTime)
 			CurStage++;
 	}
 }
+
+float AEnemyBase::TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController *EventInstigator, AActor *DamageCauser)
+{
+	Health -= (int32)DamageAmount;
+	if (Health <= 0) Destroy();
+	return DamageAmount;
+}

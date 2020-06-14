@@ -14,5 +14,7 @@ ABigEnemy::ABigEnemy()
 
 	SetActorScale3D(FVector(1.4f, 1.4f, 1.4f));
 
+	Health = 200;
 	Speed = 60;
+	Damage = 3;
 }

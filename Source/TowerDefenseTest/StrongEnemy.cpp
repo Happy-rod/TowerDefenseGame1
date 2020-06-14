@@ -14,5 +14,6 @@ AStrongEnemy::AStrongEnemy()
 
 	SetActorScale3D(FVector(1.1f, 1.1f, 0.3f));
 
+	Health = 80;
 	Speed = 50;
 }
