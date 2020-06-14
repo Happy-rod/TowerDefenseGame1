@@ -13,4 +13,6 @@ ABigEnemy::ABigEnemy()
 	RootComponent = Mesh;
 
 	SetActorScale3D(FVector(1.4f, 1.4f, 1.4f));
+
+	Speed = 60;
 }

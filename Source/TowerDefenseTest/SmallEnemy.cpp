@@ -13,5 +13,7 @@ ASmallEnemy::ASmallEnemy()
 	RootComponent = Mesh;
 
 	SetActorScale3D(FVector(0.6f, 0.6f, 0.6f));
+
+	Speed = 80;
 }
 
