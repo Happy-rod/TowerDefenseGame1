@@ -12,4 +12,8 @@ class TOWERDEFENSETEST_API AStrongEnemy : public AEnemyBase
 public:
 	AStrongEnemy();
 
+	virtual void Tick(float DeltaTime) override;
+
+private:
+	float Timer;
 };

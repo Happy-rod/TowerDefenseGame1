@@ -30,6 +30,7 @@ protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
+	virtual float TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController *EventInstigator, AActor *DamageCauser);
 
 	UFUNCTION()
 		void OnClick(AActor* TouchedActor, FKey ButtonPressed);

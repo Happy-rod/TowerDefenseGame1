@@ -32,6 +32,13 @@ void ATowerBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+float ATowerBase::TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController *EventInstigator, AActor *DamageCauser)
+{
+	Health -= (int32)DamageAmount;
+	if (Health <= 0) DestroyTower();
+	return DamageAmount;
+}
+
 void ATowerBase::OnClick(AActor* TouchedActor, FKey ButtonPressed)
 {
 	if (UpgradeDialogInstance) {
