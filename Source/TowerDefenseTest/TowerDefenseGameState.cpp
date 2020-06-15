@@ -42,7 +42,7 @@ void ATowerDefenseGameState::Tick(float DeltaTime)
 		Money += 2, Timer -= 3;
 	((UPlayerInfoUserWidget*)PlayerInfoWidgetInstance)->Money = Money;
 
-	if (bCanWin && !TActorIterator<AEnemyBase>(GetWorld())) {
+	if (bCanWin && !GameResultWidgetInstance && !TActorIterator<AEnemyBase>(GetWorld())) {
 		if (UClass* DialogClass = LoadClass<UUserWidget>(nullptr, TEXT("WidgetBlueprint'/Game/TwinStick/WinBlueprint.WinBlueprint_C'"))) {
 			if (APlayerController* PC = GetWorld()->GetFirstPlayerController()) {
 				GameResultWidgetInstance = CreateWidget<UUserWidget>(PC, DialogClass);
