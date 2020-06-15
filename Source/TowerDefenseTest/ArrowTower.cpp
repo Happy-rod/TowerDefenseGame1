@@ -3,12 +3,19 @@
 #include "EngineUtils.h"
 #include "Engine/StaticMesh.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Kismet/GameplayStatics.h"
+
 #include "TowerDefenseGameState.h"
 #include "EnemyBase.h"
 #include "ArrowProjectile.h"
 
 AArrowTower::AArrowTower()
 {
+	// Sound
+	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("/Game/TwinStick/Audio/TwinStickFire.TwinStickFire"));
+	FireSound = FireAudio.Object;
+
+	// Mesh
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ArrowTowerMesh(TEXT("/Game/Geometry/Meshes/ArrowTower.ArrowTower"));
 
 	auto Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TowerMesh"));
@@ -36,6 +43,10 @@ void AArrowTower::Tick(float DeltaTime)
 			if (Dir.Size2D() <= Range) {
 				// ·¢Éä×Óµ¯
 				auto Projectile = GetWorld()->SpawnActor<AArrowProjectile>(StartP, Dir.GetSafeNormal().Rotation());
+				// ÒôÐ§
+				if (FireSound != nullptr) {
+					UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+				}
 				Projectile->Init(Attack);
 				Timer += 5.0f / Speed;
 				break;

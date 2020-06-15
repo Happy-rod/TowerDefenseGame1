@@ -17,4 +17,5 @@ ABigEnemy::ABigEnemy()
 	Health = 50;
 	Speed = 60;
 	Damage = 3;
+	Bonus = 10;
 }

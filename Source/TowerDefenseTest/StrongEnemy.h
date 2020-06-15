@@ -16,4 +16,10 @@ public:
 
 private:
 	float Timer;
+
+public:
+
+	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
+		class USoundBase* FireSound;
+
 };

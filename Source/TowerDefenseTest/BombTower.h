@@ -25,4 +25,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void Upgrade() override;
+
+	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
+		USoundBase* FireSound;
 };

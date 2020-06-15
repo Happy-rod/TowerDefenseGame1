@@ -24,6 +24,7 @@ protected:
 	int32 Health = 15;
 	int32 Speed = 60;
 	int32 Damage = 1;
+	int32 Bonus = 1;
 
 public:	
 	virtual void Tick(float DeltaTime) override;

@@ -3,6 +3,7 @@
 #include "EngineUtils.h"
 #include "Engine/StaticMesh.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Kismet/GameplayStatics.h"
 
 #include "TowerDefenseGameState.h"
 #include "EnemyBase.h"
@@ -10,6 +11,11 @@
 
 ABombTower::ABombTower()
 {
+	// Sound
+	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("/Game/TwinStick/Audio/TwinStickFire.TwinStickFire"));
+	FireSound = FireAudio.Object;
+
+	// Mesh
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> BombTowerMesh(TEXT("/Game/Geometry/Meshes/BombTower.BombTower"));
 
 	auto Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TowerMesh"));
@@ -36,6 +42,10 @@ void ABombTower::Tick(float DeltaTime)
 			if (Dir.Size2D() <= Range) {
 				// ·¢ÉäÕ¨µ¯
 				auto Projectile = GetWorld()->SpawnActor<ABombProjectile>(StartP, Dir.GetSafeNormal().Rotation());
+				// ÒôÐ§
+				if (FireSound != nullptr) {
+					UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+				}
 				Projectile->Init(Range, Attack);
 				Timer += 5.0f / Speed;
 				break;

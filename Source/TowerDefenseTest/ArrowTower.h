@@ -4,6 +4,8 @@
 #include "TowerBase.h"
 #include "ArrowTower.generated.h"
 
+class USoundBase;
+
 UCLASS()
 class TOWERDEFENSETEST_API AArrowTower : public ATowerBase
 {
@@ -25,4 +27,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void Upgrade() override;
+
+	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
+		USoundBase* FireSound;
 };
