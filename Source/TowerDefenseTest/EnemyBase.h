@@ -21,7 +21,7 @@ private:
 protected:
 	virtual void BeginPlay() override;
 
-	int32 Health = 100;
+	int32 Health = 15;
 	int32 Speed = 60;
 	int32 Damage = 1;
 

@@ -28,19 +28,21 @@ void AArrowTower::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	UE_LOG(LogTemp, Warning, TEXT("CNM"));
 	if (Timer <= 0) {
 		// 搜索范围内的敌人
 		for (TActorIterator<AEnemyBase> It(GetWorld()); It; ++It) {
-			FVector Dir = It->GetActorLocation() - GetActorLocation();
-			UE_LOG(LogTemp, Warning, TEXT("Cnm %s"), *It->GetName());
-			if (Dir.Size() <= Range * 100) {
+			FVector StartP = GetActorLocation() + FVector(0, 0, 130.f);
+			FVector Dir = It->GetActorLocation() - StartP;
+			if (Dir.Size2D() <= Range) {
 				// 发射子弹
-				GetWorld()->SpawnActor<AArrowProjectile>(GetActorLocation(), Dir.GetSafeNormal().Rotation());
+				auto Projectile = GetWorld()->SpawnActor<AArrowProjectile>(StartP, Dir.GetSafeNormal().Rotation());
+				Projectile->Init(Attack);
+				Timer += 5.0f / Speed;
 				break;
 			}
 		}
 	}
+	else Timer -= DeltaTime;
 }
 
 void AArrowTower::Upgrade()

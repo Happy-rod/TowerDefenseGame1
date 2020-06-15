@@ -41,6 +41,7 @@ void AEnemyBase::Tick(float DeltaTime)
 float AEnemyBase::TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController *EventInstigator, AActor *DamageCauser)
 {
 	Health -= (int32)DamageAmount;
+	UE_LOG(LogTemp, Warning, TEXT("Hit health %d"), Health);
 	if (Health <= 0) Destroy();
 	return DamageAmount;
 }

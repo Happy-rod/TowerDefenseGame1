@@ -20,13 +20,13 @@ AArrowProjectile::AArrowProjectile()
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	ProjectileMovement->UpdatedComponent = ProjectileMesh;
-	ProjectileMovement->InitialSpeed = 300.f;
-	ProjectileMovement->MaxSpeed = 300.f;
+	ProjectileMovement->InitialSpeed = 500.f;
+	ProjectileMovement->MaxSpeed = 500.f;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = false;
 	ProjectileMovement->ProjectileGravityScale = 0.f;
 
-	InitialLifeSpan = 3.0f;
+	InitialLifeSpan = 1.5f;
 }
 
 void AArrowProjectile::Init(int Dmg)
@@ -37,7 +37,7 @@ void AArrowProjectile::Init(int Dmg)
 void AArrowProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 void AArrowProjectile::Tick(float DeltaTime)
@@ -51,7 +51,7 @@ void AArrowProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, U
 {
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherActor->GetClass()->IsChildOf(AEnemyBase::StaticClass()))
 	{
-		((AEnemyBase*)OtherActor)->TakeDamage(Damage, FDamageEvent(), NULL, NULL);
-		Destroy();
+		OtherActor->TakeDamage(Damage, FDamageEvent(), NULL, NULL);
 	}
+	Destroy();
 }

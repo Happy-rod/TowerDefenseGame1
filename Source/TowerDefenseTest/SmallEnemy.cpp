@@ -14,6 +14,7 @@ ASmallEnemy::ASmallEnemy()
 
 	SetActorScale3D(FVector(0.6f, 0.6f, 0.6f));
 
+	Health = 8;
 	Speed = 80;
 }
 

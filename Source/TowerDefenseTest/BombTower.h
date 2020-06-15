@@ -14,7 +14,7 @@ private:
 	int32 AttackArr[8] = { 0, 4, 6, 8, 12, 18, 40 };
 	int32 SpeedArr[8] = { 0, 2, 2, 3, 3, 4, 6 };
 	int32 RangeArr[8] = { 0, 8, 8, 9, 9, 12, 15 };
-	int32 CostArr[8] = { 0, 10, 12, 15, 18, 22, 28 };
+	int32 CostArr[8] = { 0, 10, 12, 15, 18, 22, 10000000 };
 	
 public:
 
