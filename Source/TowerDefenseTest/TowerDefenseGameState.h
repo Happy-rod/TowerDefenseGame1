@@ -21,13 +21,17 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void Damage(int Damage);
+	void Cost(int Cost);
+	void Win();
 
 	int Health = 15;
-	int Money = 100;
+	int Money = 50;
 
 private:
 
 	float Timer = 0;
+
+	bool bCanWin = false;
 
 	UUserWidget* PlayerInfoWidgetInstance = nullptr;
 

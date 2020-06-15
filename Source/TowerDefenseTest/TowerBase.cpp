@@ -17,7 +17,9 @@ void ATowerBase::BeginPlay()
 	Super::BeginPlay();
 }
 
-void ATowerBase::Upgrade() {}
+void ATowerBase::Upgrade()
+{
+}
 
 void ATowerBase::DestroyTower()
 {

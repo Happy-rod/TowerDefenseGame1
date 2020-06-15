@@ -47,7 +47,7 @@ void AArrowTower::Tick(float DeltaTime)
 
 void AArrowTower::Upgrade()
 {
-	GetWorld()->GetGameState<ATowerDefenseGameState>()->Money -= Cost;
+	GetWorld()->GetGameState<ATowerDefenseGameState>()->Cost(Cost);
 	Level++;
 	Health = HealthArr[Level];
 	Attack = AttackArr[Level];

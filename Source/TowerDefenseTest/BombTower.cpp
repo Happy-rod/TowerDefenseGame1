@@ -47,7 +47,7 @@ void ABombTower::Tick(float DeltaTime)
 
 void ABombTower::Upgrade()
 {
-	GetWorld()->GetGameState<ATowerDefenseGameState>()->Money -= Cost;
+	GetWorld()->GetGameState<ATowerDefenseGameState>()->Cost(this->Cost);
 	Level++;
 	Health = HealthArr[Level];
 	Attack = AttackArr[Level];
