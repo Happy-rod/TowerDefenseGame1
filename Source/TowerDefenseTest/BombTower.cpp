@@ -1,8 +1,12 @@
 #include "BombTower.h"
 
+#include "EngineUtils.h"
 #include "Engine/StaticMesh.h"
 #include "UObject/ConstructorHelpers.h"
+
 #include "TowerDefenseGameState.h"
+#include "EnemyBase.h"
+#include "BombProjectile.h"
 
 ABombTower::ABombTower()
 {
@@ -19,6 +23,26 @@ ABombTower::ABombTower()
 	Speed = SpeedArr[Level];
 	Range = RangeArr[Level];
 	Cost = CostArr[Level];
+}
+
+void ABombTower::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (Timer <= 0) {
+		for (TActorIterator<AEnemyBase> It(GetWorld()); It; ++It) {
+			FVector StartP = GetActorLocation();
+			FVector Dir = It->GetActorLocation() - StartP;
+			if (Dir.Size2D() <= Range) {
+				// ·¢ÉäÕ¨µ¯
+				auto Projectile = GetWorld()->SpawnActor<ABombProjectile>(StartP, Dir.GetSafeNormal().Rotation());
+				Projectile->Init(Range, Attack);
+				Timer += 5.0f / Speed;
+				break;
+			}
+		}
+	}
+	else Timer -= DeltaTime;
 }
 
 void ABombTower::Upgrade()

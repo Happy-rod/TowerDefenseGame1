@@ -23,7 +23,7 @@ public:
 	void Damage(int Damage);
 
 	int Health = 15;
-	int Money = 10;
+	int Money = 100;
 
 private:
 

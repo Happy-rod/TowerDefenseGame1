@@ -13,7 +13,6 @@ AArrowProjectile::AArrowProjectile()
 
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	ProjectileMesh->SetStaticMesh(ProjectileMeshAsset.Object);
-	ProjectileMesh->SetupAttachment(RootComponent);
 	ProjectileMesh->BodyInstance.SetCollisionProfileName("Projectile");
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AArrowProjectile::OnHit);
 	RootComponent = ProjectileMesh;
