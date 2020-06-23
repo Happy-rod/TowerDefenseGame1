@@ -13,6 +13,7 @@ ATowerDefenseGameState::ATowerDefenseGameState()
 
 void ATowerDefenseGameState::BeginPlay()
 {
+
 	if (PlayerInfoWidgetInstance) {
 		PlayerInfoWidgetInstance->RemoveFromViewport();
 		PlayerInfoWidgetInstance = nullptr;
