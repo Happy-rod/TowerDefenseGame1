@@ -16,4 +16,15 @@ class TOWERDEFENSETEST_API ABigEnemy : public AEnemyBase
 	
 public:
 	ABigEnemy();
+
+	virtual void Tick(float DeltaTime) override;
+
+private:
+	float Timer = 0;
+
+
+public:
+
+	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
+		class USoundBase* FireSound;
 };
